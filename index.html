@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emoji JSON</title>
+    <script src="./emoji.js"></script>
+    <script src="./script.js"></script>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Emoji JSON</h1>
+      <p>A useless little utility</p>
+    </header>
+
+    <main>
+      <section>
+        <h2>Input</h2>
+        <div>
+          <label for="json_input_id">Enter your JSON here: <i><span id="json_validity_id">Status: Valid JSON! ✅</span></i></label>
+          <textarea name="json_input" id="json_input_id" rows="20"></textarea>
+        </div>
+      </section>
+
+      <section>
+        <h2>Output</h2>
+        <div>
+          <pre id="json_output_id"></pre>
+        </div>
+      </section>
+    </main>
+
+    <footer></footer>
+  </body>
+</html>

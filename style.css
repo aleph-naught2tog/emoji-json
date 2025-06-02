@@ -1,0 +1,56 @@
+html {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  height: 100dvh;
+
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+header {
+  padding: 1rem;
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+main {
+  display: flex;
+  gap: 1rem;
+  width: calc(99dvw - 1rem);
+  padding: 1rem;
+}
+
+section {
+  height: 60dvh;
+  width: 50%;
+  overflow-y: hidden;
+  padding-block: 1rem;
+
+  text-align: center;
+}
+
+textarea,
+pre {
+  font-family: monospace;
+  height: 20rem;
+  overflow-y: auto;
+  border-radius: 4px;
+  border: 1px solid black;
+  padding: 1rem;
+  width: 80%;
+  margin: auto;
+}
+
+textarea {
+  display: block;
+  margin-top: 1rem;
+}
+
+pre {
+  text-align: left !important;
+  background: white;
+  margin-top: 3.5rem;
+}
