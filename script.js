@@ -1,16 +1,18 @@
 const toValidityMessage = (isValid) =>
-  `Status: ${isValid ? 'Valid' : 'Invalid'} JSON! ${isValid ? '✅' : '❌'}`;
+  `JSON Status: ${isValid ? 'Valid' : 'Invalid'} JSON! <span role="emoji">${
+    isValid ? '✅' : '❌'
+  }</span>`;
 
-const getRandomEmoji = () =>
-  {
-    const randomEmoji = EMOJI_OPTIONS[Math.floor(Math.random() * EMOJI_OPTIONS.length)];
+const getRandomEmoji = () => {
+  const randomEmoji =
+    EMOJI_OPTIONS[Math.floor(Math.random() * EMOJI_OPTIONS.length)];
 
-    if (randomEmoji.charCodeAt(0) !== 55357) {
-      return getRandomEmoji();
-    }
+  if (randomEmoji.charCodeAt(0) !== 55357) {
+    return getRandomEmoji();
+  }
 
-    return randomEmoji;
-  };
+  return randomEmoji;
+};
 
 const withPairedEmoji = (jsonyString) => {
   let currentEmoji = null;
@@ -59,15 +61,9 @@ function run() {
     throw new Error('missing output element');
   }
 
-  const inputElement = document.getElementById('json_input_id');
-  if (!inputElement) {
-    throw new Error('missing input element');
-  }
-  inputElement.value = '';
-
-  inputElement.addEventListener('input', (event) => {
+  const handleJsonInput = (event) => {
     const text = event.target.value;
-    jsonValidityElement.innerText = toValidityMessage(true);
+    jsonValidityElement.innerHTML = toValidityMessage(true);
 
     try {
       JSON.parse(text);
@@ -75,13 +71,22 @@ function run() {
       outputElement.innerText = withPairedEmoji(text);
     } catch (error) {
       if (error instanceof SyntaxError) {
-        jsonValidityElement.innerText = toValidityMessage(false);
+        jsonValidityElement.innerHTML = toValidityMessage(false);
       } else {
         console.error(error);
         throw error;
       }
     }
-  });
+  };
+
+  const inputElement = document.getElementById('json_input_id');
+  if (!inputElement) {
+    throw new Error('missing input element');
+  }
+  inputElement.addEventListener('input', handleJsonInput);
+
+  inputElement.value = '{ "example": "some other value" }';
+  handleJsonInput({ target: inputElement });
 }
 
 document.addEventListener('DOMContentLoaded', run);
